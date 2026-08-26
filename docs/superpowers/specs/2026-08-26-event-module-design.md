@@ -14,8 +14,22 @@ Admin changes these without a code release. Stored in the existing `Settings` ta
 | Key | Value | Meaning |
 |---|---|---|
 | `event.payment_hold_days` | 5 | How long seats stay held without payment |
-| `event.reminder_days` | 2,4 | Days on which payment reminders are sent |
 | `membership.grace_days` | 30 | How long an expired member keeps the member price |
+
+**Reminders are not a separate setting.** They are derived from the hold period, so changing one number can never leave the two out of step:
+
+```
+first reminder  = day ceil(hold_days / 2)
+final reminder  = day hold_days - 1
+(duplicates dropped; if hold_days <= 2, only the final reminder is sent)
+```
+
+| hold_days | reminders sent on |
+|---|---|
+| 5 | day 3, day 4 |
+| 7 | day 4, day 6 |
+| 3 | day 2 |
+| 2 | day 1 |
 
 ---
 
@@ -109,12 +123,16 @@ Built behind the existing payment-provider interface (A-5), so adding Razorpay l
 
 ## 7. Nobody pays
 
+With `event.payment_hold_days = 5`:
+
 | Day | Action |
 |---|---|
 | 0 | Seats held, invoice sent |
-| 2 | Reminder — "Pay within 3 days or your seats are released" |
+| 3 | Reminder — "Pay within 2 days or your seats are released" |
 | 4 | Final reminder |
 | 5 | Auto-cancel, seats released, payer notified |
+
+Change the hold to 7 days and the reminders move to days 4 and 6 on their own.
 
 Re-booking later is priced at the **then-current** tier. A nightly job does the sweep.
 
@@ -248,7 +266,7 @@ Save → `DRAFT` → **Publish** (confirmation states the audience size) → `PU
    - **Verify** → invoice PAID → `CONFIRMED` → Ramesh, Priya and Anil each get their own email with their own code.
    - **Reject** → reason mandatory → seats stay held → ABC re-submits.
 
-**If nobody pays:** reminder day 2 · final reminder day 4 · auto-cancel day 5 · seats released · ABC emailed. Re-booking later pays the then-current tier.
+**If nobody pays:** reminder day 3 · final reminder day 4 · auto-cancel day 5 · seats released · ABC emailed. Re-booking later pays the then-current tier.
 
 ---
 
