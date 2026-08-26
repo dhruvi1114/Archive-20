@@ -228,6 +228,22 @@ REGISTRATION:
 
 ---
 
+## 12a. Exports are Excel, not CSV (client decision, 2026-08-26)
+
+Every admin export is a real `.xlsx` workbook. CSV is not used anywhere.
+
+The reason is what CSV loses: a fee arrives as text rather than a number the
+office can total, a company name containing a comma shifts every later column of
+its row, and a phone number loses its leading zero. It also opens through an
+import dialog, which turns "download the list" into a support call.
+
+Rendered by `exceljs`, through one shared helper, so every export has the same
+frozen heading row, the same filter across the header and the same look
+whichever screen produced it. Codes become words in the file — the person
+opening it is a caterer or a receptionist, and "1" is not a dietary requirement.
+
+---
+
 ## 13. Still open
 
 - Exact team-member permissions (deliberately parked until the end of the module).
