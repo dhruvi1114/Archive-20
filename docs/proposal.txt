@@ -1,0 +1,195 @@
+Association Management Platform
+     for Lab-Grown Industry
+
+
+Prepared For:
+
+Lab Grown Diamond Growers Federation
+Gujarat Hira Bourse, Ichhapore, Surat
+
+
+
+
+Proposal Issued:
+
+August 7, 2026
+
+
+Proposed By:
+
+Mr. Vishal Virani
+Partner, Sarvadhi
+Organisation Profile
+Company Name             Sarvadhi Solutions Pvt. Ltd.
+Registered Office        501-502, Velocity Business Hub, NR Madhuvan Circle,
+                         L.P. Savani Road, Adajan, Surat, Gujarat, India-395009
+Director’s Information   Mr. Jatin D. (CEO, 15+ Years Work Experience)
+                         Mr. Paras C. (CTO, 13+ Years Work Experience)
+Website                  https://sarvadhi.com/
+Email & Phone            connect@sarvadhi.com | +91-9687619914
+Legal Status (Years)     Private Limited Company (2021)
+CIN                      U72900GJ2021PTC123444
+GST | PAN                24ABGCS2694L1ZV | ABGCS2694L
+Vision                   Defining the future of business through AI-native technology,
+                         digital transformation, and industry-driven innovation.
+Mission                  To prioritize the needs, growth, & well-being of our people by
+                         excelling in everything we do.
+Services We Offer        We focus on building and implementing ERP, CRM, HRMS,
+                         and operational systems that make businesses easier and
+                         more efficient.
+Solutions                → DiamntX (Diamond Traders & B2B Suppliers)
+                         → GemitiX (B2B Jewellery Traders & B2C Ecommerce)
+                         → EduX (Schools, Colleges & Universities)
+Proud Customers          → Ankit Gems (Diamond, India)
+                         → Unique Gems (Diamond, India)
+                         → Creative Diam (Lab Grown Diamond, India)
+                         → PureLight Diam (Lab Grown Diamond, India)
+                         → Elvee Jewels (B2B Jewellery, India)
+                         → Ashclair (D2C Jewellery, USA)
+                         → Pureyou (B2B Jewellery, India)
+                         → Aigiri (D2C Jewellery, India)
+                         → Raghuvir Developers (Real Estate, India)
+                         → AAS TECH (Textile, India)
+                         → Uppteam (Architect Firm, USA)
+                         → Solnce Energy (Renewable Energy, India)
+                         → Admindragon (Education & Healthcare, USA)
+                         → DragonLTC (Healthcare, USA)
+                         → TGX Golf (Golf Sports, Japan)
+                         → DonatorX (Social Platform, Australia)
+                         → Universal Education (Study Abroad, India)
+                         → Gateway International (Study Abroad, India)
+The Lab-Grown Diamond Association Platform
+Complete operating system for running a trade association — every member, application,
+invoice and event on one connected platform, replacing scattered spreadsheets, manual
+approvals and WhatsApp-driven follow-ups. Built for the lab-grown diamond industry, with
+member self-service on one side and full administrative control on the other.
+
+Why Association Run on This Platform
+• Approval-first operations — every membership application moves through a defined,
+   signed-off workflow with status visibility at each stage, so nothing sits in someone's inbox.
+• Billing that runs itself — payment gateway linked invoicing, so every payment auto-
+   generates a compliant invoice without manual entry.
+• Accounting-synced, not double-entered — invoices and payments flow straight into Tally /
+   Zoho Books / QuickBooks, keeping association books current without re-keying.
+• One portal per audience — members self-serve everything from application to renewal;
+   admins run the entire operation with role-based access, no separate systems to reconcile.
+
+What You Get
+
+Portal 1: Member Portal (Public Website + Member Login)
+
+ 1. Public Website               Association homepage and about, public member directory (if
+                                 allow), upcoming events listing with public event pages,
+                                 membership application form, login/signup.
+
+ 2. Application & Approval       Online application submission, real-time status tracking
+                                 through each approval stage, notification on status change.
+
+ 3. Profile & KYC                Company details, KYC document upload, industry-specific
+                                 fields (IEC code, GST, trade license), certification/accreditation
+                                 status, profile update requests.
+
+ 4. Billing & Payments           Invoice viewing, online payment for fees and renewals, receipt
+                                 download, full payment history.
+
+ 5. Renewals                     Renewal initiation, expiry visibility, automated reminders
+                                 ahead of due date.
+ 6. Events                       Event browsing, registration, online payment for paid events
+                                 and registration.
+ 7. Communication                Notices and circulars from the association, delivered in-portal
+                                 and via email/WhatsApp.
+ 8. Member Directory             Searchable directory of approved members for industry
+                                 networking and B2B discovery.
+ 9. Responsive Design            The Member Portal will be built mobile-responsive, ensuring
+                                 full functionality across desktop, tablet and mobile browsers.
+                               This is web responsiveness, not a native mobile app (see Out
+                               of Scope above)
+
+
+
+Portal 2: Admin Portal (Role-Based Access Control)
+
+ 1. Onboarding & Access        Role-based access setup (Super Admin, Admin,
+ Control                       Committee/Approver, Accounts), permission mapping per role.
+
+ 2. Member Management          Application review, approve/reject with remarks, category/tier
+                               management, suspend/reactivate, profile editing.
+
+ 3. Approval Workflow          Configurable multi-stage approval flow, approver assignment,
+                               committee members restricted to their queue via RBAC.
+
+ 4. Billing & Finance          Invoice generation and tracking, dues and overdue visibility,
+                               fee structure configuration, refunds, payment gateway
+                               reconciliation.
+ 5. Accounting Integration     Two-way sync with cloud base accounting platforms such as
+                               Refrens, Vyapar, Zoho Books for every invoice and payment.
+ 6. Events & Activity          Event creation, registration management, attendance tracking,
+ Management                    attendee reporting.
+
+ 7. Communication              Broadcast notices and circulars to all members or filtered by
+                               category, via email/WhatsApp.
+
+ 8. Hierarchy &                Office-bearer structure setup (President, Secretary, committee,
+ Designations                  chapter heads), role mapping.
+ 9. Dashboard & Reports        Total members, pending approvals, revenue collected,
+                               renewals due, event statistics — exportable.
+
+
+
+
+Out of Scope
+• Mobile App — This proposal covers a web-based platform only (Member Portal + Admin
+  Portal). Native iOS/Android apps are not part of this scope and can be quoted separately if
+  required in the future.
+• Marketing website/CMS beyond the association's core public pages (blogs, SEO campaigns,
+  etc.)
+• Custom hardware integration (e.g. physical event check-in devices, RFID/badge printers)
+• Data migration from legacy systems beyond basic import (unless specified separately)
+• Multi-language/regional language support (unless specified separately)
+• Third-party subscription costs (payment gateway, WhatsApp API, accounting software, hosting
+  — client-borne, as already noted in Terms)
+Terms & Conditions
+• Refunds — All payments are non-refundable.
+• Support Period — 3 months of complimentary support included post go-live. Continued
+   support beyond this period is available under a separate AMC, to be quoted at the time.
+• Scope — Delivery is limited to the modules and features listed in this proposal (Member
+   Portal + Admin Portal as scoped). Anything not listed is out of scope and quoted separately.
+• Client Responsibilities — The client nominates a single point of contact, provides
+   content/data (member categories, fee structure, branding assets, etc.) in an agreed format,
+   and gives feedback or sign-off within five working days of each milestone. Delays in these
+   inputs shift the delivery schedule accordingly.
+• Support — Runs Monday to Saturday, 10:00–19:00 IST, over email and WhatsApp, with first
+   response within eight working hours.
+• Third-Party Costs — Payment gateway charges, WhatsApp Business API messaging charges,
+   accounting software subscription (Tally/Zoho Books/QuickBooks), domain, SSL and hosting
+   charges are borne by the client.
+• Change Requests — Features or scope outside the package need written approval and are
+   billed separately.
+• Updates — Minor versions and security patches included during the support period; major
+   new features may be chargeable.
+• Data Ownership — All business/member data belongs to the client and resides on the
+   client's own hosting/cloud account. Sarvadhi accesses it only as required for implementation
+   and support.
+• Warranty — Defects in delivered scope reported within the 3-month support window are
+   corrected at no additional cost. The warranty does not cover issues arising from client-side
+   infrastructure, third-party integrations or unauthorised modification.
+• Intellectual Property — Source code remains with Sarvadhi; the client receives the deployed
+   solution and agreed deliverables.
+
+
+
+This proposal is valid for 7 days from the date of issue. To proceed, confirm in writing along with
+the advance payment, and we will share the kick-off schedule.
+
+
+
+For Sarvadhi Solutions Pvt. Ltd.
+
+
+
+
+Mr. Jatin Dudhat
+CEO & Co-Founder
+Date: 7th August 2026
+Place: Surat, Gujarat, India
+

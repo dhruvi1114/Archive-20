@@ -1,0 +1,11 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 980, "title": "Option A — one save bar" },
+    { "file": "PerSection.dc.html", "x": 1540, "y": 0, "w": 900, "h": 660, "title": "Option B — save per section" },
+    { "file": "States.dc.html", "x": 1540, "y": 760, "w": 900, "h": 1180, "title": "States that matter" }
+  ],
+  "annotations": [
+    { "id": "brief", "x": 0, "y": -150, "w": 620, "text": "System settings (A-34)\n\nAll 10 settings are already seeded in the database — nothing here is invented.\nThe open decision is the two save models on the right. Pick one." }
+  ],
+  "launch": { "view": "canvas" }
+}

@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+
+# These already have their own separate git history — the outer project
+# tracks docs/scripts/config only, not their contents.
+/admin/
+/backend/
+/customer/
+/sarvadhi-sentinel/
