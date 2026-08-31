@@ -24,7 +24,8 @@ listed in §4.
 | D-1 | How far does the new design go? | **Homepage + a new public header and footer.** The reference header/footer replace `PublicHeader`/`PublicFooter` for every page in `app/(public)`. Other public pages keep their current body styling for now. |
 | D-2 | Dark mode? | **Light-only.** The homepage and the new public shell always render in the reference palette regardless of the theme toggle. The toggle continues to work on member pages. |
 | D-3 | Figures with no data source (years, global trade, production, chart, partners) | **Static.** Hardcoded in one constants file in `customer/`. No admin screen, no DB table. |
-| D-4 | Figures we *can* compute (members, countries, hub cities) | **Dynamic**, from a new public API endpoint. |
+| D-4 | Figures we *can* compute (members, countries, hub cities) | **Dynamic**, from a new public API endpoint. Aggregate counts only — never a list of who they are. |
+| D-5 | The reference's "Our Members" name marquee | **Removed** (decided 2026-08-31, after D1 in `client-decisions.md` made the member directory members-only). Publishing member company names on the public homepage is the same disclosure the directory decision refused. The `directory_visible` tick-box is consent to appear *in the members' directory*, not consent to appear on a public, Google-indexed front page; reusing it for the homepage would stretch consent past what the member agreed to. Aggregate figures stay — a count discloses nothing about any individual company. |
 
 ## 3. Section-by-section data source
 
@@ -47,7 +48,7 @@ Sections are listed in the order they appear in the reference HTML.
 | Knowledge & Resources (6 rows) | Static labels, real routes | The rows are navigation, not content |
 | Global community map | Static continent shapes + **API** `stats.hubs` for the dots | Falls back to the reference's 8 demo hubs |
 | Community stats (Countries / Members / Global Partners) | 2 **API**, 1 **static** (`40+` partners) | |
-| Our Members marquee | **API** `stats.member_names` | Falls back to the reference's 12 demo names |
+| ~~Our Members marquee~~ | **Removed — D-5** | The section and the `stats.member_names` field are both dropped. No endpoint returns member names to an anonymous caller. |
 | Our Partners wall | **Static** list of 10 chips | D-3 |
 | Membership CTA + 6 benefits | Static | Verbatim |
 | Final CTA | Static | Verbatim |
@@ -70,7 +71,7 @@ Every `href="#anchor"` in the reference is a placeholder. Mapping:
 | `#resources`, "News & Insights" | `/news` |
 | `#contact` (Member Login) | `/login` |
 | "Become a Member" | `/signup` |
-| "Explore Member Directory" | `/directory` |
+| "Explore Member Directory" | `/directory` — relabelled **"Member Directory — members only"**. The route lives behind the member login (see `docs/specs/2026-08-31-member-directory.md`), so an anonymous visitor reaches a sign-in wall. The button stays: a visible, honestly-labelled locked benefit advertises membership. |
 | `mailto:info@diamondassociation.org` | `/contact` |
 | Per-event "View Event" | `/events/{slug}` |
 
@@ -117,9 +118,10 @@ trade body cannot afford on its front page. The static figures keep their `+`,
 Following the existing `NewsroomBlock` precedent:
 
 - **Upcoming Events** renders nothing when the public list is empty or fails.
-- **Our Members** renders nothing when fewer than 6 active, directory-visible
-  members exist. There is deliberately no placeholder: inventing company names
-  on a trade body's front page is a false claim, not a design decision.
+- **Our Members** is removed entirely (D-5), so there is no empty-state rule for
+  it. The reference's 12 demo company names must not ship as fallback content
+  either: inventing company names on a trade body's front page is a false claim,
+  not a design decision.
 - **Stats** fall back to the association's own published figures on failure,
   never to an error panel.
 

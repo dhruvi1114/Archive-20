@@ -42,7 +42,32 @@ Context from the signed proposal: the association nominates a single point of co
 
 ## D. Needed before the public site goes live
 
-**D1. Member directory.** Should the directory be visible to the public, or only to logged-in members? Which fields may each audience see — company name, city, category, contact person, phone, email, website?
+**D1. Member directory. ANSWERED 2026-08-31 — members-only (Option B1).**
+
+The directory is **not public**. There is no anonymous view of any kind: no public list, no public company profile, no search, no sitemap entry, no Google indexing. A visitor without an account sees a sign-in prompt and nothing else — not even company names.
+
+Access requires a signed-in user **whose own company is `ACTIVE`**. Holding a login is deliberately not enough. A user whose company is `DRAFT`, `PENDING`, `SUSPENDED`, `EXPIRED` or `TERMINATED` sees no companies at all — only a message telling them what to do about it. This makes the directory a paid membership benefit rather than something obtainable by completing the signup form.
+
+Considered and rejected: a public list with contact details gated behind login. It would have given the association SEO and a public face, but the association's directory is for members to find each other, not for outside buyers to find members. GJEPC — the closest comparable body — gates its members' directory behind login for the same reason.
+
+Two questions are settled by this and need no separate answer: whether logos may be shown publicly, and whether non-members may search. Nothing is shown publicly, and there are no non-member viewers.
+
+Field allowlist, frozen. One list, because only `ACTIVE` members ever receive a response:
+
+| Field | Anonymous / non-active | ACTIVE member | Admin |
+|---|---|---|---|
+| Anything at all | **no** — 401 or 403 | — | — |
+| Company name, city, state, categories, website, logo, `about` | no | yes | yes |
+| `member_code`, joining year | no | yes | yes |
+| Contact person name and designation | no | yes | yes |
+| Contact phone, contact email | no | yes | yes, masked behind `sensitive_data` |
+| GST, PAN, IEC, trade licence, KYC documents | no | **no** | yes |
+
+No member ever sees another member's tax identifiers or KYC evidence — those sit between the member and the association.
+
+Separately, a member controls whether they are **listed**, via a tick-box on their profile. Being able to look and being listed are independent: a member who opts out can still search the directory.
+
+Full design: `docs/specs/2026-08-31-member-directory.md`. Plain-language version: `docs/directory-module-summary.md`.
 
 **D2. Public content.** Homepage and About copy, the association's logo and wordmark, office-bearer names and photographs if they should appear.
 

@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Reproduce the client's supplied homepage design exactly inside the Next.js customer app, with events, news, member counts, member names and member countries driven by the backend API and the remaining figures held as static constants.
+**Goal:** Reproduce the client's supplied homepage design exactly inside the Next.js customer app, with events, news, member counts and member countries driven by the backend API (member **names** are excluded — see the amendment below) and the remaining figures held as static constants.
 
 **Architecture:** The reference stylesheet is ported once into a single scoped stylesheet (`site.css`, every selector prefixed with `.da`) imported by the public layout, so the design cannot leak into member screens or fight Tailwind preflight. The reference's inline `<script>` is split into pure helper modules (`src/utils/home/*`) plus thin client components that own the DOM effects. A new read-only backend endpoint `GET /api/v1/public/site/stats` supplies the four dynamic values. Static copy and static figures live in one constants file.
 
@@ -10,6 +10,34 @@
 
 **Spec:** [`docs/superpowers/specs/2026-08-31-public-homepage-design.md`](../specs/2026-08-31-public-homepage-design.md)
 **Reference design:** [`docs/superpowers/specs/2026-08-31-public-homepage-reference.html`](../specs/2026-08-31-public-homepage-reference.html)
+
+---
+
+## AMENDMENT — 2026-08-31, after this plan was written. Read before Task 1.
+
+**Decision D-5 removes the "Our Members" name marquee and every part of the API that feeds it.** This amendment overrides the plan body wherever they disagree. The plan below still contains the marquee; treat every one of those instructions as cancelled.
+
+**Why.** `docs/client-decisions.md` **D1** was answered after this plan was written: the member directory is **members-only**, with no public view of any kind. Publishing member company names on a public, Google-indexed homepage is the same disclosure the directory decision refused. The `directory_visible` flag is the member's consent to appear *in the members' directory*; it is not consent to appear on the front page, and reusing it that way stretches consent past what the member agreed to. Aggregate figures are unaffected — a count discloses nothing about any individual company.
+
+**Do not build:**
+
+| Location | Instruction |
+|---|---|
+| Task 1 — `MEMBER_NAME_LIMIT`, `listActiveMemberNames` | Do not create. The endpoint must never read a company name. |
+| Task 1 — `member_names` in `SiteStats`, the `load()` return, and its test assertions | Drop the field entirely. `SiteStats` is `{ members, countries, hub_countries }`. |
+| Task 6 — `member_names` in the shared `SiteStats` type and the hook | Drop the field. |
+| Task 8 — `customer/src/components/home/MembersMarquee.tsx` | Do not create the file. |
+| Task 9 — `import MembersMarquee` and `<MembersMarquee />` in the homepage composition | Omit both. |
+| Task 9 — the marquee verification checks | Skip. Nothing to verify. |
+| The reference's 12 demo company names | Must not ship as fallback content. Inventing member names on a trade body's front page is a false claim. |
+
+**Keep, unchanged:** the member **count**, country count, and hub-country dots. All aggregate, all safe.
+
+**Keep, with a label change:** the "Explore Member Directory" button. It points at `/directory`, which now lives behind the member login, so relabel it **"Member Directory — members only"**. A visible, honestly-labelled locked benefit advertises membership; a button that silently dumps a visitor on a sign-in wall does not.
+
+**`site.css`:** the `.marquee`, `.marquee-track`, `.marquee-group` and `.logo-cell` rules are ported from the reference stylesheet and may stay — porting the sheet once, whole, is the plan's stated approach, and unused rules are harmless. Remove them from the Task 3 class-presence check list so it does not fail on classes nothing renders.
+
+**Related specs:** `docs/specs/2026-08-31-member-directory.md` · `docs/directory-module-summary.md`
 
 ---
 
