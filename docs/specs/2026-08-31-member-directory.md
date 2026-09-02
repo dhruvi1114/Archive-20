@@ -236,10 +236,39 @@ One list, because only `ACTIVE` members ever receive a response. This is an expl
 | `joinedYear` | `Members.joined_on`, year only | yes |
 | `contact.name`, `contact.designation` | primary `MemberContact` | yes |
 | `contact.phone`, `contact.email` | primary `MemberContact` | yes |
+| `contacts[]` | **every** `MemberContact`, primary first | yes — profile only (D-6) |
+| `companyType` | `CompanyTypes.name` | yes — profile only (D-6) |
+| `address` (street lines, pincode, country) | primary `MemberAddress` | yes — profile only (D-6) |
 | `legalName` | `Members.legal_name` | **no — searched, never returned** |
 | `gstNumber`, `panNumber`, `iecCode`, `tradeLicenseNo` | `Members` | **no** |
 | Any `MemberDocument` | KYC evidence | **no** |
-| `pincode`, street lines | `MemberAddress` | **no** |
+
+### Amendment D-6 — the profile publishes the address, the type and every contact
+
+**Decided 2026-09-01, by the client, overriding the rows above.** The table has
+been updated; this note records what changed and why, because the reasoning in
+the original three choices no longer describes all of it.
+
+| Field | Was | Now |
+|---|---|---|
+| Street lines, pincode, country | never returned | on the **profile** |
+| Company type | not published | on the **profile** |
+| Contacts | the primary only | **all** of them, primary marked and first |
+
+Three things did **not** change, and the tests still pin them:
+
+- **Nothing moved onto the card.** The card is the search result; the profile is
+  a page someone opened on purpose. A listing carrying every member's door and
+  every manager's mobile is the scrape this module exists to prevent.
+- **The gate is untouched.** All of it is still behind an ACTIVE membership, and
+  still absent from every anonymous response.
+- **GST, PAN, IEC, trade licence, the registered legal name and KYC documents
+  remain unpublished.** Those sit between a member and the association.
+
+The disclosure this widens is real and worth stating plainly: a member can now
+read another member's street address and the direct line of every contact that
+company has published — not just its switchboard. That is the association's call
+to make, and it made it.
 
 Three deliberate choices:
 
