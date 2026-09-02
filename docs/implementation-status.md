@@ -22,7 +22,7 @@ _Last updated: 2026-08-31 — **M0–M4 built. M5 and M7 were built but this tab
 | M7 | Events | **BUILT** — 29 backend files incl. 12 test files; admin event, registration and payment screens | B | — | — | — |
 | M8 | Communication & notifications | PENDING | B | OQ-5 (adapter covers it) | — | — |
 | M9 | Directory & public website | **BUILT, unverified in a browser** — News shipped earlier; member directory built 2026-08-31 (38 tests). Public homepage in progress on the `feature/public-homepage-*` branches | A | ~~OQ-7~~ **answered 2026-08-31: members-only** | — | — |
-| M10 | Dashboard, reports, org, audit, settings | PENDING | B | OQ-13 | — | — |
+| M10 | Dashboard, reports, org, audit, settings | IN PROGRESS | B | OQ-13 | — | Saved reports + audit log screen delivered; dashboard tiles, roles/staff tabs, org structure outstanding |
 
 ## Planning deliverables
 

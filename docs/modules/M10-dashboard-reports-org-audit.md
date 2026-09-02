@@ -8,7 +8,7 @@ Staff can see the state of the association, prove who did what, structure the of
 ## Agent B — backend + admin
 - Migration: `Designations`, `Committees`, `CommitteeMembers`, plus any report views/materialised views justified by `EXPLAIN`.
 - `modules/dashboard`: summary (total/active members, pending approvals by stage, revenue collected in range, renewals due, event stats) — one query per tile, all indexed, cached 60 s.
-- `modules/report`: members by category/status, revenue by period, renewals due, event attendance; CSV/XLSX export with the applied filters recorded in the file header.
+- `modules/report`: members by category/status, revenue by period, renewals due, event attendance. **Delivered as SAVED reports** (`docs/specs/2026-09-02-saved-reports.md`): a report is generated once into `GeneratedReports` with the filters that produced it stored as `{id, name}` pairs, listed, and downloadable again later. XLSX only — a Summary sheet stating the filters before any figure, plus a Detail sheet when the breakdown was asked for. Deferred by decision: background generation for large results, and a per-member "Member Statement" report.
 - `modules/organisation`: designations, committees (self-referencing), chapter structure, committee membership with term dates and overlap warnings.
 - `modules/audit`: audit log query API (entity, actor, action, date range) + the History tab data used by member/application/invoice screens.
 - Masters + settings UI: document types, notification templates (M8), system settings, roles/permissions matrix, admin users.
