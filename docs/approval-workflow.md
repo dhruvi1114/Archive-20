@@ -21,15 +21,21 @@ Subjects (ADR-006, explicit FKs + CHECK): `MEMBERSHIP_APPLICATION`, `PROFILE_CHA
 
 ## 2b. Seeded default workflow — `MEMBERSHIP_APPROVAL`
 
-| Seq | Stage | Approver role | Can return | Final |
-|---|---|---|---|---|
-| 1 | Document Verification | ADMIN | ✔ | — |
-| 2 | Committee Review | APPROVER | ✔ | — |
-| 3 | Final Approval | SUPER_ADMIN | ✔ | ✔ |
+| Seq | Stage | Approver role | Can return | Final | Active |
+|---|---|---|---|---|---|
+| 1 | Document Verification | ADMIN | ✔ | — | **off** |
+| 2 | Committee Review | APPROVER | ✔ | — | **off** |
+| 3 | Final Approval | SUPER_ADMIN | ✔ | ✔ | ✔ |
 
 `PROFILE_CHANGE_APPROVAL`: single stage, approver role ADMIN, final.
 
 Stages are seeded rows; the engine reads them. Changing the number of stages is a data change, not a code change (ADR-011).
+
+**Since 2026-09-09 the flow is one stage: Final Approval.** Stages 1 and 2 are switched off, not deleted — `ApprovalStages.is_active`, seeded. An inactive stage is skipped by the engine, keeps its sequence number and keeps every decision ever recorded at it, so turning maker-checker back on is a seed change with no migration.
+
+Two things this deliberately does NOT change. Document verification is still compulsory: the "no unverified required document" check runs on every approve, not at the stage that shares its name, so switching that stage off does not make the check optional. And the APPROVER role stays — its holders simply have an empty queue.
+
+Rationale and the full change list: `docs/specs/2026-09-09-approval-stage-toggle.md`.
 
 ## 3. Application status machine
 
