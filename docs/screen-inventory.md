@@ -23,12 +23,12 @@
 | C-15 | Company profile (edit / needs-approval split) | M3 | pending-change chip, rejected change |
 | C-16 | Contacts | M3 | last-contact-cannot-delete |
 | C-17 | Addresses | M3 | empty |
-| C-18 | Membership & term (renew CTA) | M6 | active, expiring soon, in grace, expired |
+| C-18 | Membership & term (`/application/membership`, no new nav item) | M6 | active, expiring soon, paid / renews on, in grace, declined, expired |
 | C-19 | Invoice list | M5 | empty, overdue highlight |
 | C-20 | Invoice detail + Pay | M5 | unpaid, partly paid, paid, cancelled, payment-in-progress |
 | C-21 | Payment result (return from gateway) | M5 | success, failure, pending/unknown |
 | C-22 | Payment history + receipts | M5 | empty |
-| C-23 | Renewal confirm | M6 | fee changed since last term |
+| C-23 | Renewal confirm / plan switch (switch-plan section of C-18) | M6 | fee/plan changed since last term, claim pending, not on sale |
 | C-24 | Events (member) + detail | M7 | full, deadline passed, already registered, member-only |
 | C-25 | Event registration confirm / my registrations | M7 | pending payment, confirmed, cancelled |
 | C-26 | Notices list / detail | M8 | empty, unread badge, attachment |
@@ -60,7 +60,7 @@
 | A-17 | Payments list | M5 | stuck/pending payments highlighted |
 | A-18 | Reconciliation (CSV upload + match report) | M5 | parse error, unmatched rows |
 | A-19 | Refunds (request / approve) | M5 | same-admin-cannot-approve, exceeds refundable |
-| A-20 | Renewal dashboard (buckets) | M6 | empty bucket, bulk action result |
+| A-20 | Renewals (`/renewals`; Due Soon / In Grace / Expired tabs, counts from one SQL query) | M6 | empty tab, Generate Invoices result |
 | A-21 | Event list / create / edit | M7 | publish confirmation with audience count |
 | A-22 | Event registrations | M7 | capacity reached, waitlist |
 | A-23 | Attendance check-in | M7 | already checked in, not found |
@@ -79,5 +79,7 @@
 | A-36 | 403 / 404 / 500 | M0 | — |
 
 Two screens added by this review (`security.md` §8): **C-31 Privacy policy** and **C-32 Terms of use** (M9, static, content owner = client).
+
+C-18 also renders as a renewal banner above every other member screen (M6, built).
 
 **Totals:** 32 customer screens, 36 admin screens. Any screen not listed here does not get built without a scope change.

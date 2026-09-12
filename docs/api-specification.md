@@ -95,12 +95,17 @@ Contract-first: these signatures are frozen before coding starts each cycle. Cyc
 
 | Method | Path | Auth |
 |---|---|---|
-| GET `/membership/me/term` | M — current term, expiry, renewal eligibility |
-| POST `/membership/me/renew` | M — creates renewal term + invoice |
-| GET `/membership/me/terms` | M — renewal history |
-| GET `/admin/renewals/due` | A `renewal.view` — due/expiring/expired buckets |
-| POST `/admin/renewals/:memberId/initiate` | A `renewal.manage` |
-| POST `/admin/renewals/:termId/extend-grace` | A `renewal.manage` |
+| GET `/membership/me/term` | M — term view: state (`NONE`/`INACTIVE`/`AWAITING_FIRST_PAYMENT`/`ACTIVE`/`EXPIRING_SOON`/`RENEWED`/`IN_GRACE`/`DECLINED`/`EXPIRED`), current term, renewal + invoice, `can_change_plan`/`can_decline`/`can_resume` |
+| GET `/membership/me/terms` | M — term history, newest first, max 50, cancelled excluded |
+| GET `/membership/me/renewal/plans` | M — plans on sale today, with renewal price |
+| POST `/membership/me/renewal/plan` | M — `{fee_plan_id}`, switch plan while the renewal invoice is unpaid (409 `renewal.claimPending` / `planNotAvailable` / `samePlan`; 404 `renewal.noPendingRenewal`) |
+| POST `/membership/me/renewal/decline` | M — "I don't want to renew" (409 `renewal.cannotDecline`) |
+| POST `/membership/me/renewal/resume` | M — "Renew after all" (409 `renewal.notDeclined` / `planNotAvailable`) |
+| GET `/admin/renewals/summary` | A `renewal.view` — `{due, grace, expired, notice_days, grace_days}` |
+| GET `/admin/renewals` | A `renewal.view` — `?bucket=due/grace/expired&page&limit&search`, rows + pagination (`limit` clamped to 100) |
+| POST `/admin/renewals/run` | A `renewal.manage` — runs the same cycle as the hourly job (only members inside the notice window are billed); returns run summary `{closed, started, expired, raised, reminded, skipped[]}` ("Generate Invoices") |
+
+`POST /membership/me/renew`, `POST /admin/renewals/:memberId/initiate` and `POST /admin/renewals/:termId/extend-grace` from the original plan were never built and are dropped — superseded by the plan-switch and decline/resume endpoints above, and by admin's `renewal.manage`-gated `/admin/renewals/run` (no per-member grace extension).
 
 ## M7 — Events
 

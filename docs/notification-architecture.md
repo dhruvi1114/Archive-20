@@ -55,14 +55,16 @@ interface NotificationChannel {
 | `payment.failed` | IN_APP | payment failure |
 | `refund.completed` | EMAIL, IN_APP | refund done |
 | `membership.activated` | EMAIL, IN_APP | member becomes ACTIVE |
-| `membership.renewal_reminder` | EMAIL, WHATSAPP, IN_APP | T-30/T-15/T-7/T-0 (OQ-6) |
-| `membership.expired` | EMAIL, IN_APP | term expiry |
+| `membership.renewal_reminder` | EMAIL, IN_APP | T-15/T-7/T-3/T-0 (T-0 = expiry date) |
+| `membership.expired` | EMAIL, IN_APP | grace period ends |
 | `membership.suspended` | EMAIL, IN_APP | admin suspends |
 | `event.registration_confirmed` | EMAIL, IN_APP | registration confirmed |
 | `event.reminder` | EMAIL, IN_APP | T-1 day |
 | `event.cancelled` | EMAIL, IN_APP | admin cancels |
 | `notice.published` | EMAIL, IN_APP | notice/circular publish |
 | `profile.change_decided` | IN_APP | change request decided |
+
+M6 reminders are raised by the hourly `membership.renewal` job: a stage missed because the invoice was raised late is skipped, never sent in a burst, and no reminder sends while a payment claim is under verification.
 
 ## 5. Broadcast (notices)
 
